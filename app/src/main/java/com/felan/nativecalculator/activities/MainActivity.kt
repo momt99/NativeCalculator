@@ -2,6 +2,7 @@ package com.felan.nativecalculator.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TableRow
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.felan.nativecalculator.R
 import com.felan.nativecalculator.databinding.ActivityMainBinding
+import com.felan.nativecalculator.models.Operator
 import com.felan.nativecalculator.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -26,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
 
         initializeViews()
+
+        Log.i("reflection_info", Operator::class.java.declaredFields.joinToString())
     }
 
     private fun initializeViews() {

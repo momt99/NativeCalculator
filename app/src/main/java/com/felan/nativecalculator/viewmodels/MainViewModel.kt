@@ -70,7 +70,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                         lastCalced.value = currentStatement.calc()
                         currentOperator.value = ""
                     }
-                    '+', '-', '×' -> {
+                    '+', '-', '*' -> {
                         if (currentStatement.peek() == null || currentStatement.peek() is Operator)
                             pushCurrentInput()
                         lastCalced.value = currentStatement.calc()

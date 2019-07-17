@@ -118,7 +118,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_column="3"
-                    android:text="×"/>
+                    android:text="*"/>
         </TableRow>
 
         <TableRow

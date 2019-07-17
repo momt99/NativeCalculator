@@ -14,23 +14,10 @@ class StackStatement(val parent: StackStatement? = null) : CalcObject(), Calcabl
     private val items: ArrayList<CalcObject> = ArrayList()
 
     override fun calc(): Double {
-        return nativeCalc(items.toArray(arrayOf()))
+        return nativeCalc(items.toArray(arrayOf()), items.size)
     }
 
-    private fun calcNonnative() : Double {
-        var result = 0.0
-        val stack = ArrayDeque(items)
-        while (!stack.isEmpty()) {
-            result = if (stack.element() is Operator)
-                (stack.pop() as Operator).operate(result, (stack.pop() as Calcable).calc())
-            else
-                (stack.pop() as Calcable).calc()
-        }
-
-        return result
-    }
-
-    private external fun nativeCalc(objects: Array<CalcObject>): Double
+    private external fun nativeCalc(objects: Array<CalcObject>, size: Int): Double
 
     fun pushItem(item: CalcObject) {
         if (items.isNotEmpty() &&
